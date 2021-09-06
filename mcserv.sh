@@ -3,6 +3,11 @@
 # Load config
 source server.config
 
+########################################
+###           Start Server           ###
+########################################
+
+
 # Start tmux session
 {
     tmux new-session -d -s $SERVER_NAME
@@ -13,8 +18,8 @@ source server.config
 
 # Start server
 {
-    tmux send-keys -t $SERVER_NAME "cd $SERVER_DIR"
-    tmux send-keys -t $SERVER_NAME "java -Xms$MEM -Xmx$MEM -jar $SERVER_JAR"
+    tmux send-keys -t $SERVER_NAME "cd $SERVER_DIR" ENTER
+    tmux send-keys -t $SERVER_NAME "java -Xms$MEM -Xmx$MEM -jar $SERVER_JAR" ENTER
     echo "Server appears to have started successfully."
     echo "Use 'tmux a -t $SERVER_NAME' to attach to screen and check status."
 }||{
